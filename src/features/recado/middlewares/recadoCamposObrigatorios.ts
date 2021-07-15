@@ -5,7 +5,7 @@ export default function RecadoCamposObrigatorios(
   res: Response,
   next: NextFunction
 ) {
-  const { titulo, detalhes } = req.body;
+  const { titulo, descricao } = req.body;
 
   if (!titulo) {
     return res.status(400).json({
@@ -19,9 +19,9 @@ export default function RecadoCamposObrigatorios(
     });
   }
 
-  if(!detalhes){
+  if(!descricao){
     return res.status(400).json({
-        msg: "Detalhes deve ser informado"
+        msg: "Descricao deve ser informado"
     });
 }
 
