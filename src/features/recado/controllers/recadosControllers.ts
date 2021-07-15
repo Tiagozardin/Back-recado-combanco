@@ -11,9 +11,9 @@ export default class RecadoController {
   }
   
   public async show(req: Request, res: Response) {
-    const { id } = req.params;
+    const { id_login } = req.params;
 
-    const recado = await Recado.findOne(id);
+    const recado = await Recado.findOne(id_login);
 
     return res.json(recado);
   }
