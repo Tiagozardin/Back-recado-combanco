@@ -4,7 +4,6 @@ import { Recado } from "../../../core/data/database/entities/recado";
 export default class RecadoController {
   public async store(req: Request, res: Response) {
     const { titulo, descricao, id_login } = req.body;
-
     const recado = await new Recado(titulo, descricao, id_login ).save();
 
     return res.status(200).json(recado);
