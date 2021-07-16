@@ -8,6 +8,7 @@
     "build": "npx tsc",
     "start": "node dist/server.js",
     "migration": "ts-node-dev --transpile-only node_modules/typeorm/cli.js migration:run",
+    "migration:show": "yarn ts-node --transpile-only node_modules/typeorm/cli.js migration:show",
     "migration:revert": "ts-node-dev --transpile-only node_modules/typeorm/cli.js migration:revert"
   },
   "devDependencies": {
