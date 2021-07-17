@@ -9,17 +9,19 @@ export default class LoginController{
         try{
         const login = await new Login(email, password).save();
 
-        return res.status(201).json(Login);
+        return res.status(201).json(login);
         } catch(error) {
             return res.status(500).json(error);
         }
     }
 
-    public async index(req: Request, res: Response){
-        const logins = await Login.find();
-
-        return res.json(logins);
-    }
+    public async login(req: Request, res: Response) {
+        const { email, password } = req.body;
+        
+        const exist = await Login.findOne({email:email, password:password});
+    
+        return res.json({id:exist?.id});
+      }
 
     public async show(req: Request, res: Response){
         const {id} = req.params;

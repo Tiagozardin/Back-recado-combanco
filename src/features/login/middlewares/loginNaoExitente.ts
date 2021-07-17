@@ -1,19 +1,36 @@
-import { Request, Response, NextFunction } from "express";
+import express from "express";
 import { Login } from "../../../core/data/database/entities/login";
 
-export default async function LoginNaoExiste(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
-  const { id } = req.params;
 
-  const existe = await Login.findOne( id );
-  if (!existe) {
-    return res.status(404).json({
-      msg: "Username não encontrado",
+async function validateNotExistUser(
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) {
+  const { user } = req.body;
+
+  const exist = await Login.findOne({ email: user });
+  if (!exist) {
+    return res.status(404).json({ msg: "Nenhum User encontrado" });
+  }
+  next();
+}
+
+async function validatePassword(
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) {
+  const { password } = req.body;
+
+  //console.log("valid Name Middleware");
+  const exist = await Login.findOne({ password: password });
+  if (!exist) {
+    return res.status(400).json({
+      msg: "Password dever ser informado corretamente.",
     });
   }
 
   next();
 }
+export {  validateNotExistUser, validatePassword };
