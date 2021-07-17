@@ -9,6 +9,7 @@ const app = express();
 // Receber json no corpo da Requisição
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: false }));
 
 // Vincular as rotas
 const loginRoutes = new LoginRoutes().init();
