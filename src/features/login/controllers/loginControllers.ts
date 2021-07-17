@@ -23,6 +23,12 @@ export default class LoginController{
         return res.json({id:exist?.id});
       }
 
+      public async index(req: Request, res: Response){
+        const user = await Login.find();
+    
+        return res.json(user);
+    }
+
     public async show(req: Request, res: Response){
         const {id} = req.params;
 

@@ -22,7 +22,7 @@ module.exports = {
         'dist/core/data/database/entities/**/*'
     ],
     cli: {
-        entitiesDir: 'dist/core/data/database/entities',
-        migrationsDir: 'dist/core/data/database/migrations',
+        entitiesDir: 'src/core/data/database/entities',
+        migrationsDir: 'src/core/data/database/migrations',
     },
 }

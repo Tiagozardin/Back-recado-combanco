@@ -2,13 +2,13 @@ import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typ
 
 
 
-@Entity({ name: 'login'})
+@Entity({ name: "login"})
 export class Login extends BaseEntity {
-    @PrimaryGeneratedColumn({name:'id'})
+    @PrimaryGeneratedColumn({name:"id"})
     id?: number;
-    @Column({name:'email'})
+    @Column({name:"email"})
     email: string;
-    @Column({name:'password'})
+    @Column({name:"password"})
     password: string;
 
    

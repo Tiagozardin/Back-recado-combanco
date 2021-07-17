@@ -7,9 +7,9 @@ async function validateNotExistUser(
   res: express.Response,
   next: express.NextFunction
 ) {
-  const { user } = req.body;
+  const { email } = req.body;
 
-  const exist = await Login.findOne({ email: user });
+  const exist = await Login.findOne({ email: email });
   if (!exist) {
     return res.status(404).json({ msg: "Nenhum User encontrado" });
   }
